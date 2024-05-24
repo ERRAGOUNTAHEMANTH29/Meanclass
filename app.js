@@ -1,6 +1,10 @@
 const express = require('express')
 const app = express()
 const db = require('./sample_node/src/database/db')
+const userRouter = require('./sample_node/src/router/userRouter')
+
+
+app.use("/user",userRouter)
 
 db.on("open",()=>{
 app.listen(3000,()=>{
