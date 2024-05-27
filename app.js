@@ -2,8 +2,9 @@ const express = require('express')
 const app = express()
 const db = require('./sample_node/src/database/db')
 const userRouter = require('./sample_node/src/router/userRouter')
+const bodyParser = require("body-parser")
 
-
+app.use(bodyParser.json())
 app.use("/user",userRouter)
 
 db.on("open",()=>{
