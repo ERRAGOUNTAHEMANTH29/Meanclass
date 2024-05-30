@@ -10,7 +10,13 @@ const getUsers = async () => {
   return usersDetails;
 };
 
+const getSpecificUser = async (id) => {
+  const userDetails = await userModel.findById({ _id: id });
+  return userDetails;
+  // console.log(id);
+};
 module.exports = {
   createUserDetails,
   getUsers,
+  getSpecificUser,
 };

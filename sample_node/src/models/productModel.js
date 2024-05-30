@@ -1,27 +1,24 @@
 const mongoose = require("mongoose");
 const { v4: uuidv4 } = require("uuid");
-const registerSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
   _id: {
     type: String,
     default: uuidv4,
   },
-  name: {
+  productName: {
     type: String,
   },
-  mobile: {
+  price: {
     type: Number,
-  },
-  email: {
-    type: String,
-  },
-  password: {
-    type: String,
   },
   active: {
     type: Boolean,
     default: true,
   },
+  qty: {
+    type: Number,
+  },
 });
 
-const registerModel = mongoose.model("register", registerSchema);
-module.exports = registerModel;
+const productModel = mongoose.model("product", productSchema);
+module.exports = productModel;

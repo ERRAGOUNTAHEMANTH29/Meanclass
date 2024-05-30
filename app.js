@@ -1,26 +1,22 @@
-const express = require('express')
-const app = express()
-const db = require('./sample_node/src/database/db')
-const userRouter = require('./sample_node/src/router/userRouter')
-const bodyParser = require("body-parser")
+const express = require("express");
+const app = express();
+const db = require("./sample_node/src/database/db");
+const userRouter = require("./sample_node/src/router/userRouter");
+const productRoute = require("./sample_node/src/router/productRouter");
+const bodyParser = require("body-parser");
 
-app.use(bodyParser.json())
-app.use("/user",userRouter)
+app.use(bodyParser.json());
+app.use("/user", userRouter);
+app.use("/product", productRoute);
 
-db.on("open",()=>{
-app.listen(3000,()=>{
-    console.log("server is running on port 3000")
-})
-})
-db.on("error",()=>{
-console.log("error while connecting to database")
-})
-
-
-
-
-
-
+db.on("open", () => {
+  app.listen(3000, () => {
+    console.log("server is running on port 3000");
+  });
+});
+db.on("error", () => {
+  console.log("error while connecting to database");
+});
 
 // const http = require("http");
 // const os = require("os");
