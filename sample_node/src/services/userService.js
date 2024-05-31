@@ -11,9 +11,27 @@ const getUsers = async () => {
 };
 
 const getSpecificUser = async (id) => {
-  const userDetails = await userModel.findById({ _id: id });
+  // const userDetails = await userModel.findById({ _id: id });
+  // return userDetails;
+
+  const userDetails = await userModel.aggregate([
+    // {
+    //   $match: {
+    //     _id: id,
+    //   },
+    // },
+    // {
+    //   $match: {
+    //     $and: [{ _id: { $eq: id } }, { name: { $eq: "Alice" } }],
+    //   },
+    // },
+    {
+      $match: {
+        $or: [{ _id: { $eq: id } }, { name: { $eq: "Alice" } }],
+      },
+    },
+  ]);
   return userDetails;
-  // console.log(id);
 };
 module.exports = {
   createUserDetails,
