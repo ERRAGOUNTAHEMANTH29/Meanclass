@@ -1,3 +1,4 @@
+const registerModel = require("../models/registerModel");
 const userModel = require("../models/registerModel");
 
 const createUserDetails = async (body) => {
@@ -33,8 +34,19 @@ const getSpecificUser = async (id) => {
   ]);
   return userDetails;
 };
+const deleteUser = async (id) => {
+  const deleteUserDetails = await registerModel.findById({ _id: id });
+  if (!deleteUserDetails) {
+    console.log("user not found");
+  } else {
+    const deletedata = await registerModel.findByIdAndDelete({ _id: id });
+    console.log(deletedata);
+  }
+  return deleteUserDetails;
+};
 module.exports = {
   createUserDetails,
   getUsers,
   getSpecificUser,
+  deleteUser,
 };
