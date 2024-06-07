@@ -21,18 +21,37 @@ const getSpecificUser = async (id) => {
     //     _id: id,
     //   },
     // },
-    // {
-    //   $match: {
-    //     $and: [{ _id: { $eq: id } }, { name: { $eq: "Alice" } }],
-    //   },
-    // },
     {
       $match: {
-        $or: [{ _id: { $eq: id } }, { name: { $eq: "Alice" } }],
+        $and: [{ active: { $eq: true } }, { _id: { $ne: id } }],
       },
     },
+    // {
+    //   $match: {
+    //     $or: [{ active: { $eq: true } }, { _id: { $eq: id } }],
+    //   },
+    // },
   ]);
   return userDetails;
+
+  // const userDetails = await userModel.aggregate([
+  //   // {
+  //   //   $match: {
+  //   //     _id: id,
+  //   //   },
+  //   // },
+  //   // {
+  //   //   $match: {
+  //   //     $and: [{ _id: { $eq: id } }, { name: { $eq: "Alice" } }],
+  //   //   },
+  //   // },
+  //   {
+  //     $match: {
+  //       $or: [{ _id: { $eq: id } }, { name: { $eq: "Alice" } }],
+  //     },
+  //   },
+  // ]);
+  // return userDetails;
 };
 const deleteUser = async (id) => {
   const deleteUserDetails = await registerModel.findById({ _id: id });
