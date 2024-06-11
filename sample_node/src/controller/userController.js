@@ -14,12 +14,18 @@ const getSpecificUser = async (req, res) => {
   res.send(getUserDetails);
 };
 const deleteUser = async (req, res) => {
-   const deleteDetails = await userService.deleteUser(req.params.id);
-   res.send(deleteDetails);
-}
+  const deleteDetails = await userService.deleteUser(req.params.id);
+  res.send(deleteDetails);
+};
+// update
+const updateUserDetails = async (req, res) => {
+  const userUpdate = await userService.updateUser(req.params.id,req.body);
+  res.send(userUpdate);
+};
 module.exports = {
   createUserDetails,
   getUserAll,
   getSpecificUser,
   deleteUser,
+  updateUserDetails,
 };

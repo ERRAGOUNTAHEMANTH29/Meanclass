@@ -10,4 +10,6 @@ router.route("/get/all/user").get(userController.getUserAll);
 router.route("/get/user/:id").get(userController.getSpecificUser);
 // delete api
 router.route("/delete/:id").delete(userController.deleteUser);
+// update api
+router.route("/update/user/:id").put(userController.updateUserDetails);
 module.exports = router;

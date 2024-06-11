@@ -63,9 +63,24 @@ const deleteUser = async (id) => {
   }
   return deleteUserDetails;
 };
+
+// update
+const updateUser = async (id, body) => {
+  const checkUserId = await registerModel.findById({ _id: id });
+
+  if (!checkUserId) {
+    console.log("user not found");
+  }
+  const updateData = await registerModel.findByIdAndUpdate({ _id: id }, body, {
+    new: true,
+  });
+
+  return updateData;
+};
 module.exports = {
   createUserDetails,
   getUsers,
   getSpecificUser,
   deleteUser,
+  updateUser,
 };
