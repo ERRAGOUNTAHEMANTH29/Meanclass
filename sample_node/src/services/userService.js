@@ -77,10 +77,31 @@ const updateUser = async (id, body) => {
 
   return updateData;
 };
+
+//
+const getWishlistData = async (id) => {
+  const wishlistDetails = await registerModel.aggregate([
+    {
+      $match: {
+        _id: id,
+      },
+    },
+    {
+      $lookup: {
+        from: "wishlists",
+        localField: "_id",
+        foreignField: "userId",
+        as: "wishlistData",
+      },
+    },
+  ]);
+  return wishlistDetails;
+};
 module.exports = {
   createUserDetails,
   getUsers,
   getSpecificUser,
   deleteUser,
   updateUser,
+  getWishlistData,
 };

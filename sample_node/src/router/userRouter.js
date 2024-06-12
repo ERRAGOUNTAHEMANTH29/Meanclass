@@ -12,4 +12,7 @@ router.route("/get/user/:id").get(userController.getSpecificUser);
 router.route("/delete/:id").delete(userController.deleteUser);
 // update api
 router.route("/update/user/:id").put(userController.updateUserDetails);
+
+// 
+router.route('/get/wishlist/products/:id').get(userController.getWishlistData)
 module.exports = router;

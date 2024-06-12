@@ -22,10 +22,17 @@ const updateUserDetails = async (req, res) => {
   const userUpdate = await userService.updateUser(req.params.id,req.body);
   res.send(userUpdate);
 };
+
+// get wishlist data
+const getWishlistData = async (req, res) => {
+  const wishlist = await userService.getWishlistData(req.params.id)
+  res.send(wishlist);
+}
 module.exports = {
   createUserDetails,
   getUserAll,
   getSpecificUser,
   deleteUser,
   updateUserDetails,
+  getWishlistData,
 };
