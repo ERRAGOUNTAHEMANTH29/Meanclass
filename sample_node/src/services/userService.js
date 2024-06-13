@@ -94,6 +94,28 @@ const getWishlistData = async (id) => {
         as: "wishlistData",
       },
     },
+    {
+      $lookup: {
+        from: "products",
+        localField: "wishlistData.productId",
+        foreignField: "_id",
+        as: "productData",
+      },
+    },
+    // { $unwind:"$productData"},
+    {
+      $project:{
+        name:1,
+        _id: 0,
+        mobile:1,
+        email:1,
+        productData:1
+        // product_name: "$productData.productName",
+        // product_price:"$productData.price",
+        // qty:"$productData.qty"
+
+      }
+    }
   ]);
   return wishlistDetails;
 };
