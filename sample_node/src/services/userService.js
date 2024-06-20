@@ -96,7 +96,28 @@ const getWishlistData = async (id) => {
     },
     {
       $lookup: {
+<<<<<<< HEAD
         
+=======
+        from: "products",
+        localField: "wishlistData.productId",
+        foreignField: "_id",
+        as: "productData",
+      },
+    },
+    // { $unwind:"$productData"},
+    {
+      $project:{
+        name:1,
+        _id: 0,
+        mobile:1,
+        email:1,
+        productData:1
+        // product_name: "$productData.productName",
+        // product_price:"$productData.price",
+        // qty:"$productData.qty"
+
+>>>>>>> 059d9654a1161846c0b59e972e892300cb7c2f8c
       }
     }
   ]);
