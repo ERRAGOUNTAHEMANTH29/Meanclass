@@ -94,6 +94,11 @@ const getWishlistData = async (id) => {
         as: "wishlistData",
       },
     },
+    {
+      $lookup: {
+        
+      }
+    }
   ]);
   return wishlistDetails;
 };

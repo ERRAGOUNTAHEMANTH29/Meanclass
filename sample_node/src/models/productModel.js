@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { v4: uuidv4 } = require("uuid");
+
 const productSchema = new mongoose.Schema({
   _id: {
     type: String,
@@ -18,6 +19,10 @@ const productSchema = new mongoose.Schema({
   qty: {
     type: Number,
   },
+  // createdDate: {
+  //   type: String,
+  //   default: moment()
+  // }
 });
 
 const productModel = mongoose.model("product", productSchema);
